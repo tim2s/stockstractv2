@@ -1,16 +1,18 @@
-import jinja2
 from flask import Flask, request
 
-from jinja2 import Template, Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader
 from analysis.list_index import read_all
-from extraction.extract_all import run_all
+from extraction.letter_indexer import LetterIndexer
 
 app = Flask(__name__)
 
 
 @app.route('/extract/all')
 def extract_all():
-  return str(run_all())
+  skip = request.args.get('skip')
+  letterIndexer = LetterIndexer(skip)
+  references = letterIndexer.extract_references()
+  return str(references)
 
 
 @app.route('/results/')

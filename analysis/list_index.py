@@ -55,6 +55,11 @@ sort_methods = {
   'graham_to_price': gn_to_price
 }
 
+
+def exists(isin):
+  return os.path.exists('data/' + isin + '.json')
+
+
 def read_all(sort, value_filters):
   company_candidates = []
   for company_json_file in os.listdir('data'):
