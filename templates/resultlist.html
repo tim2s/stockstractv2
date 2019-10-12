@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="UTF-8">
+    <title>List of Results</title>
+</head>
+<body>
+<div class="container-fluid">
+  <a href="?sort=dividend-yield">Dividend Yield</a>
+  <a href="?sort=price-to-book">Price to Book</a>
+  <a href="?sort=price-to-earnings">Price to Earnings</a>
+  <a href="?sort=graham_to_price">Graham to Price</a>
+  <table class="table table-striped table-hover table-fixed-header">
+    <thead>
+      <tr>
+        <th>ISIN</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Avg EPS</th>
+        <th>P/E</th>
+        <th>C Book</th>
+        <th>P/B</th>
+        <th>Graham<br/> Number</th>
+        <th>GN/P</th>
+        <th>Avg Div</th>
+        <th>DivYield</th>
+        <th>Dividends</th>
+      </tr>
+    </thead>
+  <tbody>
+    {% for company in company_candidates %}
+      <tr>
+        <td><small><a href="{{ company.url() }}" target="_blank">{{ company.isin }}</a></small></td>
+        <td><small><a href="{{ company.url() }}" target="_blank">{{ company.name }}</a></small></td>
+        <td class="m-1">{{ '{0:0.2f}'.format(company.price) }}</td>
+        <td class="m-1">{{ '{0:0.2f}'.format(company.average_eps()) }}</td>
+        <td class="m-1">{{ '{0:0.2f}'.format(company.pe()) }}</td>
+        <td class="m-1">{{ '{0:0.2f}'.format(company.current_book()) }}</td>
+        <td class="m-1">{{ '{0:0.1f}'.format(company.price_to_book()) }}</td>
+        <td class="m-1">{{ '{0:0.1f}'.format(company.graham_number()) }}</td>
+        <td class="m-1">{{ '{0:0.2%}'.format(company.gn_to_price()) }}</td>
+        <td class="m-1">{{ '{0:0.2f}'.format(company.average_dividend()) }}</td>
+        <td class="m-1 {% if 0.04 > company.dividend_yield() > 0.03 %}table-warning{% endif %}{% if company.dividend_yield() > 0.04 %}table-success{% endif %}">{{ '{0:0.2%}'.format(company.dividend_yield()) }}</td>
+        <td class="m-1">{{ company.dividend_values() }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+</div>
+</body>
+</html>
