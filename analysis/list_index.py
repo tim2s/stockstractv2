@@ -35,6 +35,11 @@ def filter_dy(company_candidates, minimum, maximum):
   return list(filter(lambda company: minimum < company.dividend_yield() < maximum, company_candidates))
 
 
+def filter_gnp(company_candidates, minimum, maximum):
+  minimum, maximum = min_max_params(minimum, maximum)
+  return list(filter(lambda company: minimum < company.gn_to_price() < maximum, company_candidates))
+
+
 def min_max_params(minimum, maximum):
   if minimum is None:
     minimum = -9999
@@ -61,6 +66,7 @@ def read_all(sort, value_filters):
   company_candidates = filter_pe(company_candidates, value_filters['pe_min'], value_filters['pe_max'])
   company_candidates = filter_pb(company_candidates, value_filters['pb_min'], value_filters['pb_max'])
   company_candidates = filter_dy(company_candidates, value_filters['dy_min'], value_filters['dy_max'])
+  company_candidates = filter_gnp(company_candidates, value_filters['gnp_min'], value_filters['gnp_max'])
   if sort is not None and sort in sort_methods.keys():
     company_candidates = sort_methods.get(sort)(company_candidates)
   return company_candidates

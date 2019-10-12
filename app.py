@@ -12,6 +12,7 @@ app = Flask(__name__)
 def extract_all():
   return str(run_all())
 
+
 @app.route('/results/')
 def view_all():
   sort = request.args.get('sort')
@@ -19,6 +20,8 @@ def view_all():
   filter_pe_max = request.args.get('pe_max')
   filter_pb_max = request.args.get('pb_max')
   filter_pb_min = request.args.get('pb_min')
+  filter_gnp_max = request.args.get('gnp_max')
+  filter_gnp_min = request.args.get('gnp_min')
   filter_dy_max = request.args.get('dy_max')
   filter_dy_min = request.args.get('dy_min')
   filter = {
@@ -28,11 +31,14 @@ def view_all():
     'pb_max': filter_pb_max,
     'dy_min': filter_dy_min,
     'dy_max': filter_dy_max,
+    'gnp_min': filter_gnp_min,
+    'gnp_max': filter_gnp_max
   }
   company_candidates = read_all(sort, filter)
   j2_env = Environment(loader=FileSystemLoader('templates'), trim_blocks=True)
   template = j2_env.get_template('resultlist.html')
   return template.render(company_candidates=company_candidates)
+
 
 if __name__ == '__main__':
   app.run()

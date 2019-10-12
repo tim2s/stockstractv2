@@ -34,3 +34,6 @@ You can use the following request parameters to find the stocks you are interest
    * `max_pb=2` Filters P/B Ratio below 2
    * `min_dy=0.03` Filters Dividend Yield above 3.0 %
    * `max_dy=0.12` Filters Dividend Yield below 12.0 %
+   * `min_gnp=0.1` Filters Graham Number to Price Ratio above 10.0 %
+   * `max_gnp=1.25` Filters Graham Number to Price Ratio below 125.0 %
+   
