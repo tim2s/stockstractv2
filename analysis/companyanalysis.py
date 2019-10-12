@@ -9,6 +9,10 @@ class CompanyAnalysis:
     self.company_record = company_record
     self.isin = company_record['head']['isin']
     self.name = company_record['head']['title']
+    if 'sector' in company_record['head'].keys():
+      self.sector = company_record['head']['sector']
+    else:
+      self.sector = '--'
     self.price = float(company_record['head']['current_price']['value'])
 
   def url(self):
@@ -68,7 +72,8 @@ class CompanyAnalysis:
       return self.price / self.graham_number()
 
   def is_valid(self):
-    return 'dividendPerShare' in self.company_record['kpi'].keys() \
+    return self.price > 0 \
+           and 'dividendPerShare' in self.company_record['kpi'].keys() \
            and 'earningsPerShare' in self.company_record['kpi'].keys() \
            and 'bookValuePerShare' in self.company_record['kpi'].keys()
 
