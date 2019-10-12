@@ -37,3 +37,11 @@ You can use the following request parameters to find the stocks you are interest
    * `min_gnp=0.1` Filters Graham Number to Price Ratio above 10.0 %
    * `max_gnp=1.25` Filters Graham Number to Price Ratio below 125.0 %
    
+   
+##### Data Display
+Colors indicate specific warnings which relate to unhealthy conditions.
+* Red Earnings field - The company has an average earning below dividend. 
+This is a sign that the company won't be able to pay the dividend in that height for 
+long without running out of money.
+* Green Dividend Yield - Yield above 4.0 %
+* Yellow Dividend Yield - Yield between 3.0 % and 4.0 % 

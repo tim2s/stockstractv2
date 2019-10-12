@@ -35,7 +35,7 @@
         <td><small><a href="{{ company.url() }}" target="_blank">{{ company.isin }}</a></small></td>
         <td><small><a href="{{ company.url() }}" target="_blank">{{ company.name }}</a></small></td>
         <td class="m-1">{{ '{0:0.2f}'.format(company.price) }}</td>
-        <td class="m-1">{{ '{0:0.2f}'.format(company.average_eps()) }}</td>
+        <td class="m-1 {% if company.average_dividend() > company.average_eps() %}table-danger{% endif %}">{{ '{0:0.2f}'.format(company.average_eps()) }}</td>
         <td class="m-1">{{ '{0:0.2f}'.format(company.pe()) }}</td>
         <td class="m-1">{{ '{0:0.2f}'.format(company.current_book()) }}</td>
         <td class="m-1">{{ '{0:0.1f}'.format(company.price_to_book()) }}</td>
