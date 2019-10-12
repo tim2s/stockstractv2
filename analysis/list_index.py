@@ -40,6 +40,12 @@ def filter_gnp(company_candidates, minimum, maximum):
   return list(filter(lambda company: minimum < company.gn_to_price() < maximum, company_candidates))
 
 
+def filter_sector(company_candidates, sector):
+  if sector is not None:
+    return list(filter(lambda company: company.sector == sector, company_candidates))
+  else:
+    return company_candidates
+
 def min_max_params(minimum, maximum):
   if minimum is None:
     minimum = -9999
@@ -60,6 +66,8 @@ def exists(isin):
   return os.path.exists('data/' + isin + '.json')
 
 
+
+
 def read_all(sort, value_filters):
   company_candidates = []
   for company_json_file in os.listdir('data'):
@@ -72,6 +80,7 @@ def read_all(sort, value_filters):
   company_candidates = filter_pb(company_candidates, value_filters['pb_min'], value_filters['pb_max'])
   company_candidates = filter_dy(company_candidates, value_filters['dy_min'], value_filters['dy_max'])
   company_candidates = filter_gnp(company_candidates, value_filters['gnp_min'], value_filters['gnp_max'])
+  company_candidates = filter_sector(company_candidates, value_filters['sector'])
   if sort is not None and sort in sort_methods.keys():
     company_candidates = sort_methods.get(sort)(company_candidates)
   return company_candidates

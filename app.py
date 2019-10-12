@@ -26,6 +26,7 @@ def view_all():
   filter_gnp_min = request.args.get('gnp_min')
   filter_dy_max = request.args.get('dy_max')
   filter_dy_min = request.args.get('dy_min')
+  filter_sector = request.args.get('sector')
   filter = {
     'pe_min': filter_pe_min,
     'pe_max': filter_pe_max,
@@ -34,7 +35,8 @@ def view_all():
     'dy_min': filter_dy_min,
     'dy_max': filter_dy_max,
     'gnp_min': filter_gnp_min,
-    'gnp_max': filter_gnp_max
+    'gnp_max': filter_gnp_max,
+    'sector': filter_sector
   }
   company_candidates = read_all(sort, filter)
   j2_env = Environment(loader=FileSystemLoader('templates'), trim_blocks=True)

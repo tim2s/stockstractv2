@@ -77,5 +77,15 @@ class CompanyAnalysis:
            and 'earningsPerShare' in self.company_record['kpi'].keys() \
            and 'bookValuePerShare' in self.company_record['kpi'].keys()
 
+  def dividend_growth(self):
+    end = self.dividend_values()[:2]
+    start = self.dividend_values()[-2:]
+    start_avg = reduce((lambda x, y: x + y), start) / len(start)
+    end_avg = reduce((lambda x, y: x + y), end) / len(end)
+    if start_avg != 0:
+      return (end_avg - start_avg) / start_avg
+    else:
+      return 0
+
   def __repr__(self):
     return f'{self.isin}:{self.name:<30} PRICE:{self.price:.2f} | GN:{self.graham_number():.1f}({self.gn_to_price():.1%}) | PE:{self.pe():.1f} | PB:{self.price_to_book():.1f} | DY:{self.dividend_yield():.2%} | URL:{self.url()}'

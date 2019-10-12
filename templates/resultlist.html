@@ -45,7 +45,7 @@
         <td class="m-1">{{ '{0:0.2%}'.format(company.gn_to_price()) }}</td>
         <td class="m-1">{{ '{0:0.2f}'.format(company.average_dividend()) }}</td>
         <td class="m-1 {% if 0.04 > company.dividend_yield() > 0.03 %}table-warning{% endif %}{% if company.dividend_yield() > 0.04 %}table-success{% endif %}">{{ '{0:0.2%}'.format(company.dividend_yield()) }}</td>
-        <td class="m-1">{{ company.dividend_values() }}</td>
+        <td class="m-1 {% if company.dividend_growth() < 0 %}table-danger{% endif %}{% if company.dividend_growth() > 0.04 %}table-success{% endif %} ">{{ company.dividend_values() }}</td>
       </tr>
     {% endfor %}
   </tbody>

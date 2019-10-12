@@ -36,6 +36,7 @@ You can use the following request parameters to find the stocks you are interest
    * `max_dy=0.12` Filters Dividend Yield below 12.0 %
    * `min_gnp=0.1` Filters Graham Number to Price Ratio above 10.0 %
    * `max_gnp=1.25` Filters Graham Number to Price Ratio below 125.0 %
+   * `sector=Energie` Limits to Companies from specific Sector %
    
    
 ##### Data Display
@@ -45,3 +46,5 @@ This is a sign that the company won't be able to pay the dividend in that height
 long without running out of money.
 * Green Dividend Yield - Yield above 4.0 %
 * Yellow Dividend Yield - Yield between 3.0 % and 4.0 % 
+* Green Dividend Field - Dividend is growing > 3.0 %
+* Red Dividend Field - Dividend is declining
