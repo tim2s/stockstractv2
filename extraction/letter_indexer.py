@@ -77,3 +77,4 @@ class LetterIndexer:
         reference.update({'status': 'success'})
       else:
         reference.update({'status': 'failed'})
+    return reference

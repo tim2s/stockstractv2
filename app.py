@@ -1,10 +1,44 @@
 from flask import Flask, request
 
 from jinja2 import Environment, FileSystemLoader
-from analysis.list_index import read_all
+from analysis.list_index import read_all, read_filtered
 from extraction.letter_indexer import LetterIndexer
+from datetime import date, datetime
 
 app = Flask(__name__)
+
+
+@app.route('/refresh/')
+def refresh():
+  company_candidates = read_all()
+  read_count = 0
+  for candidate in company_candidates:
+    last_update = datetime.strptime(candidate.company_record['head']['timestamp'], "%Y-%m-%d %H:%M:%S")
+    if (datetime.today() - last_update).days > 1:
+
+      reference = {
+        'url': candidate.url(),
+        'isin': candidate.isin,
+        'sector': candidate.sector
+      }
+      try:
+        LetterIndexer().process_reference(reference)
+        read_count += 1
+      except Exception as ex:
+        print(ex)
+    else:
+      print("skipping {0} because it was already updated on {1}".format(candidate.isin, last_update))
+  return "Renewed " + str(read_count) + " / " + str(len(company_candidates))
+
+
+@app.route('/refresh-single/')
+def refresh_single():
+    reference = {
+      'url': 'https://kurse.boerse.ard.de/ard/kurse_einzelkurs_profil.htn?i='+request.args.get('i'),
+      'sector': request.args.get('sector')
+    }
+    LetterIndexer().process_reference(reference)
+    return "Done." + str(reference)
 
 
 @app.route('/extract/all')
@@ -38,7 +72,7 @@ def view_all():
     'gnp_max': filter_gnp_max,
     'sector': filter_sector
   }
-  company_candidates = read_all(sort, filter)
+  company_candidates = read_filtered(sort, filter)
   j2_env = Environment(loader=FileSystemLoader('templates'), trim_blocks=True)
   template = j2_env.get_template('resultlist.html')
   return template.render(company_candidates=company_candidates)

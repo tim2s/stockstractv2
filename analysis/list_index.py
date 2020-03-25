@@ -67,14 +67,18 @@ def exists(isin):
 
 
 
-
-def read_all(sort, value_filters):
+def read_all():
   company_candidates = []
   for company_json_file in os.listdir('data'):
     with open('data/' + company_json_file, 'r') as file:
       company_record = json.load(file)
       company_analysis = CompanyAnalysis(company_record)
       company_candidates.append(company_analysis)
+  return company_candidates
+
+
+def read_filtered(sort, value_filters):
+  company_candidates = read_all()
   company_candidates = list(filter(lambda company: company.is_valid(), company_candidates))
   company_candidates = filter_pe(company_candidates, value_filters['pe_min'], value_filters['pe_max'])
   company_candidates = filter_pb(company_candidates, value_filters['pb_min'], value_filters['pb_max'])
