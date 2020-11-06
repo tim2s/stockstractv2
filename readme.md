@@ -28,14 +28,14 @@ You can use the following request parameters to find the stocks you are interest
    * `sort=price-to-earnings` Sorts by Price to Earnings Ascending, lowest value first
    * `sort=graham_to_price` Sorts by Graham Number to Price, lowest value first
 * __filter__ Can be set as follows (multiple filters work additive)
-   * `min_pe=0.1` Filters P/E Ratio above 0.1
-   * `max_pe=25` Filters P/E Ratio below 25
-   * `min_pb=0.5` Filters P/B Ratio above 1
-   * `max_pb=2` Filters P/B Ratio below 2
-   * `min_dy=0.03` Filters Dividend Yield above 3.0 %
-   * `max_dy=0.12` Filters Dividend Yield below 12.0 %
-   * `min_gnp=0.1` Filters Graham Number to Price Ratio above 10.0 %
-   * `max_gnp=1.25` Filters Graham Number to Price Ratio below 125.0 %
+   * `pe_min=0.1` Filters P/E Ratio above 0.1
+   * `pe_max=25` Filters P/E Ratio below 25
+   * `pb_min=0.5` Filters P/B Ratio above 1
+   * `pb_max=2` Filters P/B Ratio below 2
+   * `dy_min=0.03` Filters Dividend Yield above 3.0 %
+   * `dy_max=0.12` Filters Dividend Yield below 12.0 %
+   * `gnp_min=0.1` Filters Graham Number to Price Ratio above 10.0 %
+   * `gnp_max=1.25` Filters Graham Number to Price Ratio below 125.0 %
    * `sector=Energie` Limits to Companies from specific Sector %
    
    

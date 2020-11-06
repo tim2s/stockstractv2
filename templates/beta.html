@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<script src="/static/plotly-latest.min.js"></script>
+    <script type="application/javascript">
+        function draw() {
+            const data = [
+                {% for portfolio_return in portfolio_returns %}
+                    {
+                        y: {{ portfolio_return[1] }},
+                        type: 'box',
+                        boxpoints: false,
+                        name: '{{ portfolio_return[0].name }}'
+                    }
+                    {{ ", " if not loop.last }}
+                {% endfor %}
+            ];
+            Plotly.newPlot('figure-div', data);
+        }
+    </script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body onload="draw();">
+<div class="container-fluid">
+    <div id="figure-div"></div>
+</div>
+</body>
+</html>
