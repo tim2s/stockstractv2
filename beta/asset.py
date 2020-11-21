@@ -11,3 +11,9 @@ class Asset:
             self.std_dev = self.std_dev = iqr / 1.35
         if self.std_dev is None:
             self.std_dev = 0
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.__str__()

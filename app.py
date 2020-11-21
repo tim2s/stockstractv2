@@ -2,7 +2,7 @@ from flask import Flask, request
 
 from jinja2 import Environment, FileSystemLoader
 from analysis.list_index import read_all, read_filtered
-from beta.simulator import compute
+from beta.simulator import compute, optimize
 from extraction.letter_indexer import LetterIndexer
 from datetime import date, datetime
 
@@ -81,7 +81,7 @@ def view_all():
 
 @app.route('/beta/')
 def view_beta():
-    portfolio_returns = compute()
+    portfolio_returns = optimize()
     j2_env = Environment(loader=FileSystemLoader('templates'), trim_blocks=True)
     template = j2_env.get_template('beta.html')
     return template.render(portfolio_returns=portfolio_returns)

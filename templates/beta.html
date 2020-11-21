@@ -6,9 +6,63 @@
 	<script src="/static/plotly-latest.min.js"></script>
     <script type="application/javascript">
         function draw() {
+
+            /*
+               Plotly.plot(gd, {
+                    data: [
+                        {"uid": "7f031f",
+                        "line": {"color": "#1f77b4", "width": 2},
+                        "name": "Carmelo Anthony",
+                        "type": "box",
+                        "y": ["30", "27", "21", "31", "25", "9", "20", "26", "29", "23", "37", "29", "35", "29", "20", "34", "23", "34", "45", "30", "31", "29", "33", "34", "45", "23", "40", "20", "39", "27", "26", "29", "28", "25", "42", "20", "25", "9", "27", "31", "36", "42", "12", "15", "32", "29", "35", "30", "32", "6", "14", "9", "21", "37", "28", "29", "22", "32", "24", "50", "40", "41", "36", "36", "36", "31", "25", "36", "34", "26", "36", "22", "21", "27", "32", "21", "24", "28", "39"], "index": 0, "xaxis": "x", "yaxis": "y", "jitter": 0, "marker": {"line": {"color": "#444", "width": 0}, "size": 6, "color": "#1f77b4", "symbol": "circle", "opacity": 1, "outliercolor": "rgba(0, 0, 0, 0)"}, "boxmean": false, "opacity": 1, "visible": true, "pointpos": 0, "boxpoints": "outliers", "fillcolor": "rgba(31, 119, 180, 0.5)", "hoverinfo": "all", "showlegend": true, "legendgroup": "", "whiskerwidth": 0.5}, {"uid": "619495", "line": {"color": "#ff7f0e", "width": 2}, "name": "Dwyane Wade", "type": "box", "y": ["29", "15", "14", "22", "22", "8", "19", "6", "28", "18", "19", "34", "24", "13", "26", "26", "14", "13", "24", "19", "21", "21", "29", "24", "21", "27", "22", "14", "30", "18", "11", "11", "15", "27", "35", "29", "17", "21", "17", "23", "20", "31", "20", "30", "24", "13", "20", "17", "33", "24", "39", "22", "20", "32", "24", "22", "23", "23", "21", "20", "24", "16", "11", "19", "18", "17", "11", "22", "21", "16", "21", "4", "14", "15", "10", "6", "18", "19", "14", "18", "16", "10", "10", "21", "17", "10", "16", "32", "25", "14", "23"], "index": 1, "xaxis": "x", "yaxis": "y", "jitter": 0, "marker": {"line": {"color": "#444", "width": 0}, "size": 6, "color": "#ff7f0e", "symbol": "circle", "opacity": 1, "outliercolor": "rgba(0, 0, 0, 0)"}, "boxmean": false, "opacity": 1, "visible": true, "pointpos": 0, "boxpoints": "outliers", "fillcolor": "rgba(255, 127, 14, 0.5)", "hoverinfo": "all", "showlegend": true, "legendgroup": "", "whiskerwidth": 0.5}, {"uid": "558ae2", "line": {"color": "#2ca02c", "width": 2}, "name": "Deron Williams", "type": "box", "y": ["19", "18", "14", "12", "17", "26", "24", "14", "22", "9", "11", "15", "16", "8", "11", "10", "33", "23", "18", "18", "12", "17", "24", "14", "16", "16", "10", "19", "15", "8", "19", "24", "15", "22", "15", "22", "21", "12", "24", "14", "18", "12", "27", "20", "9", "11", "15", "12", "20", "15", "19", "23", "15", "24", "33", "24", "14", "20", "42", "17", "27", "21", "18", "31", "31", "18", "20", "6", "19", "21", "24", "30", "32", "11", "29", "33", "30", "8", "22", "8", "18", "32", "23", "17", "24"], "index": 2, "xaxis": "x", "yaxis": "y", "jitter": 0, "marker": {"line": {"color": "#444", "width": 0}, "size": 6, "color": "#2ca02c", "symbol": "circle", "opacity": 1, "outliercolor": "rgba(0, 0, 0, 0)"}, "boxmean": false, "opacity": 1, "visible": true, "pointpos": 0, "boxpoints": "outliers", "fillcolor": "rgba(44, 160, 44, 0.5)", "hoverinfo": "all", "showlegend": true, "legendgroup": "", "whiskerwidth": 0.5}, {"uid": "49778a", "line": {"color": "#d62728", "width": 2}, "name": "Brook Lopez", "type": "box", "y": ["27", "13", "8", "14", "20", "23", "24", "13", "23", "22", "26", "15", "22", "9", "9", "18", "16", "16", "14", "15", "21", "26", "35", "11", "25", "27", "18", "13", "13", "15", "22", "22", "20", "14", "22", "18", "21", "16", "21", "20", "30", "17", "13", "18", "25", "23", "19", "9", "27", "9", "20", "19", "22", "16", "11", "18", "19", "26", "17", "18", "38", "18", "21", "28", "11", "27", "14", "28", "19", "29", "21", "24", "16", "20", "21", "21", "22", "26", "28", "17", "21"], "index": 3, "xaxis": "x", "yaxis": "y", "jitter": 0, "marker": {"line": {"color": "#444", "width": 0}, "size": 6, "color": "#d62728", "symbol": "circle", "opacity": 1, "outliercolor": "rgba(0, 0, 0, 0)"}, "boxmean": false, "opacity": 1, "visible": true, "pointpos": 0, "boxpoints": "outliers", "fillcolor": "rgba(214, 39, 40, 0.5)", "hoverinfo": "all", "showlegend": true, "legendgroup": "", "whiskerwidth": 0.5}, {"uid": "9cf9d1", "line": {"color": "#9467bd", "width": 2}, "name": "Damian Lillard", "type": "box", "y": ["23", "21", "20", "13", "16", "20", "12", "22", "27", "16", "24", "28", "13", "12", "20", "8", "24", "24", "23", "12", "9", "29", "16", "12", "25", "15", "17", "11", "20", "21", "18", "11", "20", "18", "10", "37", "9", "16", "13", "26", "18", "20", "20", "16", "10", "26", "23", "21", "19", "18", "4", "33", "12", "24", "19", "12", "26", "24", "20", "20", "35", "20", "27", "26", "14", "27", "8", "24", "22", "19", "15", "24", "16", "17", "17", "11", "15", "38", "10", "30", "12", "21"],
+                            "index": 4, "xaxis": "x", "yaxis": "y", "jitter": 0,
+                            "marker": {"line": {"color": "#444", "width": 0}, "size": 6, "color": "#9467bd", "symbol": "circle", "opacity": 1, "outliercolor": "rgba(0, 0, 0, 0)"},
+                            "boxmean": false,
+                            "opacity": 1,
+                            "visible": true,
+                            "pointpos": 0,
+                            "boxpoints": "outliers",
+                            "fillcolor": "rgba(148, 103, 189, 0.5)", "hoverinfo": "all", "showlegend": true, "legendgroup": "", "whiskerwidth": 0.5}],
+                    layout: {"font": {"size": 12, "color": "#444", "family": "\"Open Sans\", verdana, arial, sans-serif"},
+                        "smith": false, "title": "Points Scored Per NBA Game",
+                        "width": 1172,
+                        "xaxis": {"side": "bottom", "type": "category", "color": "#444", "dtick": 1, "range": [-0.5, 4.5], "tick0": 0, "ticks": "", "title": "", "anchor": "y", "domain": [0, 1], "nticks": 0, "showgrid": false, "showline": false, "tickfont": {"size": 12, "color": "#444", "family": "\"Open Sans\", verdana, arial, sans-serif"}, "tickmode": "auto", "zeroline": false, "autorange": false, "tickangle": "auto", "titlefont": {"size": 14, "color": "#444", "family": "\"Open Sans\", verdana, arial, sans-serif"}, "fixedrange": false, "tickprefix": "", "ticksuffix": "", "showexponent": "all", "categoryorder": "trace", "exponentformat": "e", "showticklabels": true},
+                        "yaxis": {"side": "left", "type": "linear", "color": "#444", "dtick": 10, "range": [1.4444444444444464, 52.55555555555556], "tick0": 0, "ticks": "", "title": "Points", "anchor": "x", "domain": [0, 1], "nticks": 0, "showgrid": true, "showline": false, "tickfont": {"size": 12, "color": "#444", "family": "\"Open Sans\", verdana, arial, sans-serif"}, "tickmode": "auto", "zeroline": true, "autorange": false, "gridcolor": "rgb(238, 238, 238)", "gridwidth": 1, "tickangle": "auto", "titlefont": {"size": 14, "color": "#444", "family": "\"Open Sans\", verdana, arial, sans-serif"},
+                            "fixedrange": false, "tickformat": "", "tickprefix": "", "ticksuffix": "", "hoverformat": "", "showexponent": "all",
+                            "zerolinecolor": "#444", "zerolinewidth": 1, "exponentformat": "B", "showticklabels": true},
+                        "boxgap": 0.3, "height": 590,
+                        "legend": {"x": 1.02, "y": 1, "font": {"size": 12, "color": "#444", "family": "\"Open Sans\", verdana, arial, sans-serif"},
+                            "bgcolor": "#fff", "xanchor": "left", "yanchor": "auto", "traceorder": "normal", "bordercolor": "#444", "borderwidth": 0, "orientation": "v"},
+                        "margin": {"b": 80, "l": 80, "r": 80, "t": 100, "pad": 0, "autoexpand": true},
+                        "shapes": [], "boxmode": "group", "autosize": true, "dragmode": "zoom", "hovermode": "closest",
+                        "titlefont": {"size": 17, "color": "#444", "family": "\"Open Sans\", verdana, arial, sans-serif"}, "separators": ".,", "showlegend": true,
+                        "annotations": [], "boxgroupgap": 0.3, "hidesources": false, "plot_bgcolor": "#fff", "paper_bgcolor": "#fff"},
+                    frames: [],
+                    config: {"showLink": true, "linkText": "Export to plotly.com", "mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A"}
+                });
+
+               */
+
+            const layout = {
+                title: 'Portfolio Risk & Returns',
+                margin: {b: 80, l: 80, r: 80, t: 100, pad: 0, autoexpand: true},
+                boxgroupgap: 0,
+                boxmode: 'group',
+                boxgap: 0.1,
+                xaxis: {
+                    showgrid: false,
+                    zeroline: false
+                },
+                yaxis: {
+                    title: 'Returns',
+                    range: []
+                },
+                height:600
+            };
             const data = [
                 {% for portfolio_return in portfolio_returns %}
                     {
+                        size: 6,
                         y: {{ portfolio_return[1] }},
                         type: 'box',
                         boxpoints: false,
@@ -17,7 +71,7 @@
                     {{ ", " if not loop.last }}
                 {% endfor %}
             ];
-            Plotly.newPlot('figure-div', data);
+            Plotly.newPlot('figure-div', data, layout);
         }
     </script>
     <link rel="stylesheet" href="/static/styles.css">
